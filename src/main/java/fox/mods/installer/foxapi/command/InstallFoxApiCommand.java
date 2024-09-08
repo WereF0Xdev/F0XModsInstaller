@@ -1,24 +1,25 @@
-package fox.mods.installer.tpa.command;
+package fox.mods.installer.foxapi.command;
 
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.context.CommandContext;
+import fox.mods.installer.foxapi.InstallFoxApi;
+import fox.mods.installer.rtp.InstallRtp;
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.commands.Commands;
-import fox.mods.installer.tpa.InstallTpa;
 
-public class InstallTpaCommand {
+public class InstallFoxApiCommand {
 
     public static void register(CommandDispatcher<CommandSourceStack> dispatcher) {
-        dispatcher.register(Commands.literal("install-tpa")
+        dispatcher.register(Commands.literal("install-foxapi")
                 .requires(source -> source.hasPermission(4))
-                .executes(InstallTpaCommand::downloadMod));
+                .executes(InstallFoxApiCommand::downloadMod));
     }
 
     private static int downloadMod(CommandContext<CommandSourceStack> context) {
         CommandSourceStack source = context.getSource();
         source.sendSuccess(() -> net.minecraft.network.chat.Component.literal("§6Starting download..."), false);
 
-        InstallTpa.downloadMod(source);
+        InstallFoxApi.downloadMod(source);
         return 1;
     }
 }

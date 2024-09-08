@@ -1,4 +1,4 @@
-package fox.mods.installer.tpa;
+package fox.mods.installer.essentialscommands;
 
 import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.network.chat.Component;
@@ -11,11 +11,11 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-public class InstallTpa {
+public class InstallEssentialsCommands {
 
     public static void downloadMod(CommandSourceStack source) {
-        String url = "https://cdn.modrinth.com/data/pbGzLSUN/versions/unFVNLdv/tpa-1.5.0-forge-1.20.1.jar";
-        String fileName = "tpa-1.5.0.jar";
+        String url = "https://cdn.modrinth.com/data/meLvxeBH/versions/AP03eQKm/essentials_commands-2.0.0-forge-1.20.1.jar";
+        String fileName = "essentials_commands-2.0.0.jar";
         String modsFolderPath = FMLPaths.GAMEDIR.get().resolve("mods").toString();
 
         new Thread(() -> {
@@ -41,7 +41,7 @@ public class InstallTpa {
                     }
 
                     source.getServer().execute(() ->
-                            source.sendSuccess(() -> Component.literal("§6Downloaded TPA 1.5.0 for Forge 1.20.X to mods folder: " + targetFile.getPath()), false)
+                            source.sendSuccess(() -> Component.literal("§6Downloaded Essentials Commands 2.0.0 for Forge and NeoForge 1.20.1 to mods folder: " + targetFile.getPath()), false)
                     );
                 }
             } catch (IOException e) {
